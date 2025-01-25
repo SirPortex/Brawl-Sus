@@ -1232,10 +1232,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5009192312298641221, guid: 5e8e75bb22441334d8ad17c96755aa01, type: 3}
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 2688503741773351713, guid: 28902baf4f64f5f4f9a4405cc0cec856, type: 3}
     - target: {fileID: 8658918380472565939, guid: 5e8e75bb22441334d8ad17c96755aa01, type: 3}
       propertyPath: m_Name
       value: GameManager

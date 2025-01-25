@@ -3,6 +3,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Com.MyCompany.MyGame
 {
@@ -10,7 +11,13 @@ namespace Com.MyCompany.MyGame
     {
         public float walkingSpeed, rotationSpeed, aceleration, sphereRadius;//,gravityScale;
 
-        public float life = 100;
+
+        [Tooltip("The current Health of our player")]
+        public float Health = 1f;
+
+        [Tooltip("The Player's UI GameObject Prefab")]
+        [SerializeField]
+        public GameObject PlayerUiPrefab;
 
 
         public string groundName;
@@ -24,11 +31,32 @@ namespace Com.MyCompany.MyGame
 
         private float currentSpeed;
 
+        [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
+        public static GameObject LocalPlayerInstance;
 
+        private void Awake()
+        {
+            if (photonView.IsMine)
+            {
+                PlayerMovement.LocalPlayerInstance = this.gameObject;
+            }
+
+            DontDestroyOnLoad(this.gameObject);
+        }
 
         // Start is called before the first frame update
         void Start()
         {
+            if (PlayerUiPrefab != null)
+            {
+                GameObject _uiGo = Instantiate(PlayerUiPrefab);
+                _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+            }
+            else
+            {
+                Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+            }
+
 
             CameraWork _cameraWork = this.gameObject.GetComponent<CameraWork>();
 
@@ -130,6 +158,11 @@ namespace Com.MyCompany.MyGame
         {
             return currentSpeed;
 
+        }
+
+        public static implicit operator PlayerMovement(PlayerManager v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
