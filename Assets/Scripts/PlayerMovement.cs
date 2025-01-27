@@ -85,6 +85,12 @@ namespace Com.MyCompany.MyGame
         // Update is called once per frame
         void Update()
         {
+
+            if(!photonView.IsMine && PhotonNetwork.IsConnected)
+            {
+                return;
+            }
+
             x = Input.GetAxisRaw("Horizontal");
             z = Input.GetAxisRaw("Vertical");
             mouseX = Input.GetAxisRaw("Mouse X");
