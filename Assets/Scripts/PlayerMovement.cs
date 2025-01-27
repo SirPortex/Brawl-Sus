@@ -1,9 +1,10 @@
-using Photon.Pun.Demo.PunBasics;
+
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Pavel;
 
 namespace Com.MyCompany.MyGame
 {
@@ -157,12 +158,6 @@ namespace Com.MyCompany.MyGame
         public float GetCurrentSpeed()
         {
             return currentSpeed;
-
-        }
-
-        public static implicit operator PlayerMovement(PlayerManager v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

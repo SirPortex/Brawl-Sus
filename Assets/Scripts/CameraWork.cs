@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Photon.Pun.Demo.PunBasics
+namespace Pavel
 {
     /// <summary>
     /// Camera work. Follow a target

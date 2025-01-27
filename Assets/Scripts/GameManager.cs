@@ -24,9 +24,7 @@ namespace Com.MyCompany.MyGame
             {
                 if(PlayerMovement.LocalPlayerInstance == null)
                 {
-                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
-                    // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    StartCoroutine(InstantiatePlayer());
                 }
                 else
                 {
@@ -34,6 +32,15 @@ namespace Com.MyCompany.MyGame
                 }
             }
         }
+
+        IEnumerator InstantiatePlayer()
+        {
+            yield return new WaitForSeconds(0.3f);
+            Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
+            // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+            PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+        }
+
 
         #region Photon Callbacks
 

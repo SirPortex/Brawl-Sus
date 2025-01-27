@@ -192,7 +192,8 @@ MonoBehaviour:
   rotationSpeed: 200
   aceleration: 5
   sphereRadius: 0.37
-  life: 100
+  Health: 1
+  PlayerUiPrefab: {fileID: 0}
   groundName: Ground
   animator: {fileID: 0}
 --- !u!114 &5679391771814617641

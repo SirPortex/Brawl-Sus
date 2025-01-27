@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 using System.Collections;
 using TMPro;
-using Photon.Pun.Demo.PunBasics;
+
 
 namespace Com.MyCompany.MyGame
 {
@@ -46,7 +46,7 @@ namespace Com.MyCompany.MyGame
 
         #region Public Methods
 
-        public void SetTarget(PlayerManager _target)
+        public void SetTarget(PlayerMovement _target)
         {
             if (_target == null)
             {
