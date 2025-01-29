@@ -21,6 +21,9 @@ namespace Com.MyCompany.MyGame
         public GameObject PlayerUiPrefab;
 
 
+        public float cooldown;
+
+
         public string groundName;
 
         public Animator animator;
@@ -95,24 +98,41 @@ namespace Com.MyCompany.MyGame
             z = Input.GetAxisRaw("Vertical");
             mouseX = Input.GetAxisRaw("Mouse X");
 
-
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+            }
 
             InterpolationSpeed();
 
             RotatePlayer();
         }
 
+        public void Attack()
+        {
+            StartCoroutine(AttackAnim());
+        }
 
+        IEnumerator AttackAnim()
+        {
+            Debug.Log("Estoy atacando");
+            animator.SetBool("IsAttacking", true);
+            //animator.Play("Attack");
+            yield return new WaitForSeconds(cooldown);
+            animator.SetBool("IsAttacking", false);
 
+        }
         public void InterpolationSpeed()
         {
 
             if (x != 0 || z != 0)
             {
+                //animator.SetBool("IsAttacking", false);
                 currentSpeed = Mathf.Lerp(currentSpeed, walkingSpeed, aceleration * Time.deltaTime); // velocidad de caminar
             }
             else
             {
+                //animator.SetBool("IsAttacking", false);
                 currentSpeed = Mathf.Lerp(currentSpeed, 0, aceleration * Time.deltaTime); // velocidad de idle
             }
         }
