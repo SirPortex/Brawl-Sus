@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Pavel;
+using UnityEngine.SceneManagement;
 
 namespace Com.MyCompany.MyGame
 {
-    public class PlayerMovement : MonoBehaviourPunCallbacks
+    public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         public float walkingSpeed, rotationSpeed, aceleration, sphereRadius;//,gravityScale;
 
@@ -46,6 +47,16 @@ namespace Com.MyCompany.MyGame
             }
 
             DontDestroyOnLoad(this.gameObject);
+            SceneManager.activeSceneChanged += OnSceneLoaded;
+        }
+
+        void OnSceneLoaded(Scene scene, Scene mode)
+        {
+            if(this != null)
+            {
+
+            GetComponentInChildren<GameObjectPool>().DelayInstanitateObjects();
+            }
         }
 
         // Start is called before the first frame update
@@ -184,6 +195,18 @@ namespace Com.MyCompany.MyGame
         public float GetCurrentSpeed()
         {
             return currentSpeed;
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            //if (stream.IsWriting)
+            //{
+            //    stream.SendNext(gameObject.activeSelf);
+            //}
+            //else
+            //{
+            //    gameObject.SetActive((bool)stream.ReceiveNext());
+            //}
         }
     }
 }

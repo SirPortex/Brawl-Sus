@@ -97,6 +97,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41f233db4a6d83544adc1d5e1128b40c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8894096910835005813}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41f233db4a6d83544adc1d5e1128b40c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1498940798459643343}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41f233db4a6d83544adc1d5e1128b40c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2371418516185803177}
   m_SourcePrefab: {fileID: 100100000, guid: 41f233db4a6d83544adc1d5e1128b40c, type: 3}
 --- !u!1 &2216089166900781191 stripped
 GameObject:
@@ -165,5 +171,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663f04adefb9bab4d9b1cf39e8e97f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  readyToUse: 0
   speed: 5
   maxTime: 2
+--- !u!114 &-1498940798459643343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216089166900781191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: -2371418516185803177}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-2371418516185803177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216089166900781191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
