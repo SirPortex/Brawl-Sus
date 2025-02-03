@@ -41,7 +41,7 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
     {
         foreach (GameObject obj in _pool)
         {
-            if (obj.GetComponent<Bullet>().readyToUse) //Si el objecto NO esta activado (desatcivado) SI FUNCIONA GENERELAIZAR (DIEGO)
+            if (obj.GetComponent<PoolObject>().readyToUse) //Si el objecto NO esta activado (desatcivado) SI FUNCIONA GENERELAIZAR (DIEGO)
             {
                 return obj; //Si el objetco no es activo lo damos
             }
@@ -60,7 +60,7 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
         GameObject clone = PhotonNetwork.Instantiate(this.objectToPool.name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
         if (clone)
         {
-            clone.SetActive(false); // desactivamos el objecto para que no se utilice de primeras, consume menos recuros asi
+           // clone.SetActive(true); // desactivamos el objecto para que no se utilice de primeras, consume menos recuros asi
             _pool.Add(clone); // lo guardamos en la lista
         }
 

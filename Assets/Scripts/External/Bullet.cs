@@ -4,9 +4,8 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Bullet : MonoBehaviourPunCallbacks, IPunObservable
+public class Bullet : MonoBehaviour
 {
-    public bool readyToUse = true;
 
 
     public float speed;
@@ -20,6 +19,7 @@ public class Bullet : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+
     }
 
     private void Update()
@@ -28,8 +28,8 @@ public class Bullet : MonoBehaviourPunCallbacks, IPunObservable
         if (currentTime >= maxTime)
         {
             currentTime = 0;
-            //gameObject.SetActive(false); //Se "devuelve" a la pool
-            readyToUse = true ;
+            gameObject.SetActive(false); //Se "devuelve" a la pool
+            GetComponent<PoolObject>().readyToUse = true;
         }
     }
 
@@ -43,15 +43,5 @@ public class Bullet : MonoBehaviourPunCallbacks, IPunObservable
         _dir = value;
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(readyToUse);
-        }
-        else
-        {
-            readyToUse = (bool)stream.ReceiveNext();
-        }
-    }
+    
 }

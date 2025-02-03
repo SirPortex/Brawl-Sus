@@ -36,6 +36,8 @@ namespace Com.MyCompany.MyGame
             // #Critical
             // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
             PhotonNetwork.AutomaticallySyncScene = true;
+            PhotonNetwork.SendRate = 40;
+            PhotonNetwork.SerializationRate = 40;
         }
 
         /// <summary>
@@ -74,7 +76,6 @@ namespace Com.MyCompany.MyGame
                 isConnecting = PhotonNetwork.ConnectUsingSettings();
 
                 // #Critical, we must first and foremost connect to Photon Online Server.
-                PhotonNetwork.ConnectUsingSettings();
                 PhotonNetwork.GameVersion = gameVersion;
             }
         }

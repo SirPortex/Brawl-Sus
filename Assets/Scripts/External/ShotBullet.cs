@@ -29,12 +29,12 @@ public class ShotBullet : MonoBehaviourPun
             if (obj)
             {
                 Debug.Log("PIUM !");
-                obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
 
-                obj.GetComponent<Bullet>().readyToUse = false;
+                obj.GetComponent<PoolObject>().readyToUse = false;
 
-                obj.transform.position = transform.position;
+                obj.transform.position = new Vector3(0f, 2f, 0f);
                 obj.GetComponent<Bullet>().SetDirection(transform.forward);
+                obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
             }
         }
     }
