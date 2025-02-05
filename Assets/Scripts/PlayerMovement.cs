@@ -15,12 +15,13 @@ namespace Com.MyCompany.MyGame
 
 
         [Tooltip("The current Health of our player")]
-        public float Health = 1f;
+        public float Health = 0.5f;
 
         [Tooltip("The Player's UI GameObject Prefab")]
         [SerializeField]
         public GameObject PlayerUiPrefab;
 
+        public float counter = 1;
 
         public float cooldown;
 
@@ -62,6 +63,8 @@ namespace Com.MyCompany.MyGame
         // Start is called before the first frame update
         void Start()
         {
+            
+
             if (PlayerUiPrefab != null)
             {
                 GameObject _uiGo = Instantiate(PlayerUiPrefab);
@@ -99,8 +102,9 @@ namespace Com.MyCompany.MyGame
         // Update is called once per frame
         void Update()
         {
+            counter += Time.deltaTime;
 
-            if(!photonView.IsMine && PhotonNetwork.IsConnected)
+            if (!photonView.IsMine && PhotonNetwork.IsConnected)
             {
                 return;
             }
@@ -109,9 +113,11 @@ namespace Com.MyCompany.MyGame
             z = Input.GetAxisRaw("Vertical");
             mouseX = Input.GetAxisRaw("Mouse X");
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && counter >= 0.5f)
             {
+
                 Attack();
+                counter = 0;
             }
 
             InterpolationSpeed();
