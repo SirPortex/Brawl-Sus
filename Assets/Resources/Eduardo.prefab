@@ -406,7 +406,7 @@ MonoBehaviour:
   aceleration: 5
   sphereRadius: 0.37
   Health: 1
-  PlayerUiPrefab: {fileID: 0}
+  PlayerUiPrefab: {fileID: 8182750340600020244, guid: 85c4ea183837e6d4c856456f5c753ebd, type: 3}
   counter: 0
   cooldown: 0.8
   groundName: Ground
