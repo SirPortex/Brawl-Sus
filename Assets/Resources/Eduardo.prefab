@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3957730144882022342}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.028084517, y: 0.8154993, z: -0.025374413}
+  m_LocalPosition: {x: 0.51, y: 0.771, z: 0.625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -406,7 +406,7 @@ MonoBehaviour:
   aceleration: 5
   sphereRadius: 0.37
   Health: 1
-  PlayerUiPrefab: {fileID: 8182750340600020244, guid: 85c4ea183837e6d4c856456f5c753ebd, type: 3}
+  PlayerUiPrefab: {fileID: 181818039813526628, guid: 4c351a09e8df2734a9d9ce8952224c94, type: 3}
   counter: 0
   cooldown: 0.8
   groundName: Ground

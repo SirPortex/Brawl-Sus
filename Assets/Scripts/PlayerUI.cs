@@ -23,7 +23,7 @@ namespace Com.MyCompany.MyGame
         [SerializeField]
         private Vector3 screenOffset = new Vector3(0f, 30f, 0f);
 
-        float characterControllerHeight = 0f;
+        float characterControllerHeight = 2.3f;
         Transform targetTransform;
         Renderer targetRenderer;
         CanvasGroup _canvasGroup;
