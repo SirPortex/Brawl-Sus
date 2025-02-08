@@ -219,11 +219,12 @@ namespace Com.MyCompany.MyGame
             //    gameObject.SetActive((bool)stream.ReceiveNext());
             //}
         }
-
+#if !UNITY_5_4_OR_NEWER
         void OnLevelWasLoaded(int level)
         {
             this.CalledOnLevelWasLoaded(level);
         }
+#endif
 
 #if UNITY_5_4_OR_NEWER
         void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
