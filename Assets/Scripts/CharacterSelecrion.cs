@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelecrion : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Button previousButton;
+    [SerializeField] private Button nextButton;
+
+    private int currentCharacter;
+
+    private void Awake()
     {
-        
+        SelectCharacter(currentCharacter);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SelectCharacter(int index)
     {
-        
+        previousButton.interactable = (index != 0);
+        nextButton.interactable= (index != transform.childCount - 1);
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(i == index);
+        }
+    }
+
+    public void ChangeCharacter(int change)
+    {
+        currentCharacter += change;
+        SelectCharacter(currentCharacter);  
     }
 }

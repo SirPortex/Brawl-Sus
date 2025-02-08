@@ -15,7 +15,7 @@ namespace Com.MyCompany.MyGame
 
 
         [Tooltip("The current Health of our player")]
-        public float Health = 0.5f;
+        public float Health = 1f;
 
         [Tooltip("The Player's UI GameObject Prefab")]
         [SerializeField]
