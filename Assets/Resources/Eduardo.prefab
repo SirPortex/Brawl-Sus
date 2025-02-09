@@ -405,7 +405,7 @@ MonoBehaviour:
   rotationSpeed: 200
   aceleration: 5
   sphereRadius: 0.37
-  Health: 1
+  health: 1
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 4c351a09e8df2734a9d9ce8952224c94, type: 3}
   counter: 0
   cooldown: 0.8

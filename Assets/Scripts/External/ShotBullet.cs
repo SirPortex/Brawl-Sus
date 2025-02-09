@@ -7,7 +7,7 @@ using UnityEngine;
 public class ShotBullet : MonoBehaviourPun
 {
     GameObjectPool bulletPool;
-    float counter = 0.5f;
+    float counter = 0.8f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class ShotBullet : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && counter >= 0.5f)
+        if (Input.GetMouseButtonDown(0) && counter >= 0.8f)
         {
             GameObject obj = bulletPool.GimmeInactiveGameObject();
 

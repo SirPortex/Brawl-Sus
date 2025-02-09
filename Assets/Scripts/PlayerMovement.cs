@@ -15,13 +15,13 @@ namespace Com.MyCompany.MyGame
 
 
         [Tooltip("The current Health of our player")]
-        public float Health = 1f;
+        public float health = 1f;
 
         [Tooltip("The Player's UI GameObject Prefab")]
         [SerializeField]
         public GameObject PlayerUiPrefab;
 
-        public float counter = 1;
+        public float counter = 0.8f;
 
         public float cooldown;
 
@@ -57,6 +57,14 @@ namespace Com.MyCompany.MyGame
             {
 
             GetComponentInChildren<GameObjectPool>().DelayInstanitateObjects();
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!photonView.IsMine && other.CompareTag("Bullet"))
+            {
+                health -= 0.1f;
             }
         }
 
@@ -118,7 +126,7 @@ namespace Com.MyCompany.MyGame
             z = Input.GetAxisRaw("Vertical");
             mouseX = Input.GetAxisRaw("Mouse X");
 
-            if (Input.GetMouseButtonDown(0) && counter >= 0.5f)
+            if (Input.GetMouseButtonDown(0) && counter >= 0.8f)
             {
 
                 Attack();
@@ -128,6 +136,14 @@ namespace Com.MyCompany.MyGame
             InterpolationSpeed();
 
             RotatePlayer();
+
+            if (photonView.IsMine) // Si la vida llega a 0 nos salimos de la sala
+            {
+                if(health <= 0)
+                {
+                    GameManager.instance.LeaveRoom();
+                }
+            }
         }
 
         public void Attack()

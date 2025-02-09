@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 using System.Collections;
 using TMPro;
+using Photon.Pun;
 
 
 namespace Com.MyCompany.MyGame
 {
-    public class PlayerUI : MonoBehaviour
+    public class PlayerUI : MonoBehaviourPunCallbacks, IPunObservable
     {
         #region Private Fields
 
@@ -49,7 +50,7 @@ namespace Com.MyCompany.MyGame
             // Reflect the Player Health
             if (playerHealthSlider != null)
             {
-                playerHealthSlider.value = target.Health;
+                playerHealthSlider.value = target.health;
             }
 
             // Destroy itself if the target is null, It's a fail safe when Photon is destroying Instances of a Player over the network
@@ -105,6 +106,11 @@ namespace Com.MyCompany.MyGame
             {
                 characterControllerHeight = characterController.height;
             }
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion
