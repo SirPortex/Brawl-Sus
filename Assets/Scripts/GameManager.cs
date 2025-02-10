@@ -16,6 +16,19 @@ namespace Com.MyCompany.MyGame
 
         public static GameManager instance;
 
+        //private void Awake()
+        //{
+        //    if (!instance)
+        //    {
+        //        instance = this; //Se instancia el objeto
+        //        DontDestroyOnLoad(gameObject); //No se destruye entre cargas
+        //    }
+        //    else
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
+            
         public void Start()
         {
             instance = this;
