@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 namespace Com.MyCompany.MyGame
 {
-    public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
+    public class ChonkyMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         public float walkingSpeed, rotationSpeed, aceleration, sphereRadius;//,gravityScale;
 
@@ -18,7 +18,6 @@ namespace Com.MyCompany.MyGame
         public float health = 1f;
 
         [Tooltip("The Player's UI GameObject Prefab")]
-
         public GameObject PlayerUiPrefab;
 
         public float counter = 0.8f;
@@ -53,30 +52,30 @@ namespace Com.MyCompany.MyGame
 
         void OnSceneLoaded(Scene scene, Scene mode)
         {
-            if(this != null)
+            if (this != null)
             {
 
-            GetComponentInChildren<GameObjectPool>().DelayInstanitateObjects();
+                GetComponentInChildren<GameObjectPool>().DelayInstanitateObjects();
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!photonView.IsMine)
-                return;
+            //if (!photonView.IsMine)
+            //    return;
 
-            Bullet bullet = other.GetComponent<Bullet>();
+            //Bullet bullet = other.GetComponent<Bullet>();
 
-            if (bullet && bullet.owner != gameObject)
-            {
-                health -= 0.1f;
-            }
+            //if (bullet && bullet.owner != gameObject)
+            //{
+            //    health -= 0.1f;
+            //}
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            
+
 
             if (PlayerUiPrefab != null)
             {
@@ -144,7 +143,7 @@ namespace Com.MyCompany.MyGame
 
             if (photonView.IsMine) // Si la vida llega a 0 nos salimos de la sala
             {
-                if(health <= 0)
+                if (health <= 0)
                 {
                     GameManager.instance.LeaveRoom();
                 }

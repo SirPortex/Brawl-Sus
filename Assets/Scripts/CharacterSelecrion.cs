@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class CharacterSelecrion : MonoBehaviour
 {
+
     [SerializeField] private Button previousButton;
+
     [SerializeField] private Button nextButton;
 
-    private int currentCharacter;
+    public int currentCharacter = 0;
 
-    private void Awake()
+    public void Awake()
     {
         SelectCharacter(currentCharacter);
     }
 
-    private void SelectCharacter(int index)
+    public void SelectCharacter(int index)
     {
         previousButton.interactable = (index != 0);
         nextButton.interactable= (index != transform.childCount - 1);
@@ -24,6 +26,8 @@ public class CharacterSelecrion : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(i == index);
         }
+
+        PlayerPrefs.SetInt("selectedCharacter", currentCharacter);
     }
 
     public void ChangeCharacter(int change)

@@ -2571,5 +2571,10 @@ namespace Photon.Pun
                 }
             }
         }
+
+        public static GameObject Instantiate(GameObject prefab)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
