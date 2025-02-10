@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   maxTime: 2
+  owner: {fileID: 0}
 --- !u!114 &-1498940798459643343
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,12 +4,12 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviourPun
 {
-
-
     public float speed;
     public float maxTime;
+
+    public GameObject owner;
     
     private float currentTime;
     private Vector3 _dir;
@@ -42,6 +42,4 @@ public class Bullet : MonoBehaviour
     {
         _dir = value;
     }
-
-    
 }

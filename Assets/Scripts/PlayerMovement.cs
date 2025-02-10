@@ -62,7 +62,12 @@ namespace Com.MyCompany.MyGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!photonView.IsMine && other.CompareTag("Bullet"))
+            if (!photonView.IsMine)
+                return;
+
+            Bullet bullet = other.GetComponent<Bullet>();
+
+            if (bullet && bullet.owner != gameObject)
             {
                 health -= 0.1f;
             }
@@ -226,14 +231,14 @@ namespace Com.MyCompany.MyGame
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            //if (stream.IsWriting)
-            //{
-            //    stream.SendNext(gameObject.activeSelf);
-            //}
-            //else
-            //{
-            //    gameObject.SetActive((bool)stream.ReceiveNext());
-            //}
+            if (stream.IsWriting)
+            {
+                stream.SendNext(health);
+            }
+            else
+            {
+                health = (float)stream.ReceiveNext();
+            }
         }
 #if !UNITY_5_4_OR_NEWER
         void OnLevelWasLoaded(int level)

@@ -39,6 +39,9 @@ public class ShotBullet : MonoBehaviourPun
                 obj.transform.position = new Vector3(transform.position.x , transform.position.y + 1f, transform.position.z);
                 obj.transform.rotation = transform.rotation;
                 obj.GetComponent<Bullet>().SetDirection(transform.forward);
+
+                obj.GetComponent<Bullet>().owner = gameObject;
+
                 obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
             }
 
