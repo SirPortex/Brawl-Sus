@@ -20,6 +20,10 @@ namespace Com.MyCompany.MyGame
         [SerializeField]
         private Slider playerHealthSlider;
 
+        [Tooltip("UI Slider to display Player's Health")]
+        [SerializeField]
+        private Slider cooldownHealthSlider;
+
         [Tooltip("Pixel offset from the player target")]
         [SerializeField]
         private Vector3 screenOffset = new Vector3(0f, 30f, 0f);
@@ -51,6 +55,11 @@ namespace Com.MyCompany.MyGame
             if (playerHealthSlider != null)
             {
                 playerHealthSlider.value = target.health;
+            }
+
+            if(cooldownHealthSlider != null)
+            {
+                cooldownHealthSlider.value = target.counter;
             }
 
             // Destroy itself if the target is null, It's a fail safe when Photon is destroying Instances of a Player over the network

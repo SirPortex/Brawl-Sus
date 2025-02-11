@@ -159,6 +159,10 @@ namespace Com.MyCompany.MyGame
 
         IEnumerator Dead()
         {
+            walkingSpeed = 0;
+            rotationSpeed = 0;
+            maxCounter = 10000000;
+
             animator.SetBool("IsDead", true);
             yield return new WaitForSeconds(deadTime);
             GameManager.instance.LeaveRoom();

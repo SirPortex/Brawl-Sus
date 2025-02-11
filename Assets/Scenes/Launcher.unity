@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 158cc3b63a38b504fad211b4f562b298, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -242,8 +242,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7fee13a4bf716d242b2a9b680123e2bb, type: 2}
-  m_sharedMaterial: {fileID: 2483669521878374115, guid: 7fee13a4bf716d242b2a9b680123e2bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b1b14bb00c137d045a129b19b5a596f6, type: 2}
+  m_sharedMaterial: {fileID: 2483669521878374115, guid: b1b14bb00c137d045a129b19b5a596f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

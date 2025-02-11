@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPool: {fileID: 2216089166900781191, guid: 179f5958ac21fe348a174ae9be060437, type: 3}
-  poolSize: 10
+  poolSize: 0
   shouldExpand: 1
 --- !u!1001 &2994350839574345328
 PrefabInstance:
@@ -464,6 +464,7 @@ MonoBehaviour:
   transformY: 1
   transformZ: 0
   cooldown: 0.1
+  deadTime: 2
 --- !u!114 &4532366102723943396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +529,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: IsAttacking
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: IsDead
   m_SynchronizeLayers:
   - SynchronizeType: 1

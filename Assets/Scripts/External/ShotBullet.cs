@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Com.MyCompany.MyGame;
 using Photon.Pun;
 using UnityEngine;
 
@@ -13,10 +14,15 @@ public class ShotBullet : MonoBehaviourPun
 
     public float cooldown;
 
+    public float deadTime;
+
+    PlayerMovement playerMovement;
+
     // Start is called before the first frame update
     void Start()
     {
         bulletPool = GetComponentInChildren<GameObjectPool>();
+        playerMovement = GetComponent<PlayerMovement>();
         
     }
 
@@ -36,6 +42,12 @@ public class ShotBullet : MonoBehaviourPun
             
 
             counter = 0;
+        }
+
+        if(playerMovement.health <= 0)
+        {
+            maxCounter = 10000000;
+        
         }
 
     }
