@@ -21,7 +21,10 @@ namespace Com.MyCompany.MyGame
 
         public GameObject PlayerUiPrefab;
 
-        public float counter = 0.8f;
+        public float counter;
+        public float maxCounter;
+
+        public float damage;
 
         public float cooldown;
 
@@ -69,7 +72,7 @@ namespace Com.MyCompany.MyGame
 
             if (bullet && bullet.owner != gameObject)
             {
-                health -= 0.1f;
+                health -= damage;
             }
         }
 
@@ -131,7 +134,7 @@ namespace Com.MyCompany.MyGame
             z = Input.GetAxisRaw("Vertical");
             mouseX = Input.GetAxisRaw("Mouse X");
 
-            if (Input.GetMouseButtonDown(0) && counter >= 0.8f)
+            if (Input.GetMouseButtonDown(0) && counter >= maxCounter)
             {
 
                 Attack();
