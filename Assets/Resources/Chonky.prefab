@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1692181490545552511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6303225356151705443}
+  - component: {fileID: 5584876788296848109}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6303225356151705443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692181490545552511}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.18981516, y: 0.7321758, z: -0.023291707}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5726162848475331963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5584876788296848109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692181490545552511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e238f2513a54f429713960aa8ee959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPool: {fileID: 396455656806538470, guid: fb5831ab86a1305409be662f4012fe0c, type: 3}
+  poolSize: 1
+  shouldExpand: 1
 --- !u!1001 &5259592730619959952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,7 +117,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4f27da6dc529244581ea233ffd8bbf1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6303225356151705443}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4f27da6dc529244581ea233ffd8bbf1, type: 3}
       insertIndex: -1
@@ -90,6 +140,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4f27da6dc529244581ea233ffd8bbf1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7496090838359277752}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4f27da6dc529244581ea233ffd8bbf1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7595272929969686461}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4f27da6dc529244581ea233ffd8bbf1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1526844821977472027}
@@ -198,7 +251,7 @@ MonoBehaviour:
   health: 1
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 4c351a09e8df2734a9d9ce8952224c94, type: 3}
   counter: 0
-  cooldown: 0.8
+  cooldown: 1.5
   groundName: Ground
   animator: {fileID: 0}
 --- !u!114 &8290535892083548802
@@ -230,6 +283,23 @@ MonoBehaviour:
   centerOffset: {x: 0, y: 4, z: 0}
   followOnStart: 0
   smoothSpeed: 10
+--- !u!114 &7595272929969686461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4917009854253066177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430300d209d912842a1637cb4aeb49ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 1.5
+  maxCounter: 1.5
+  transformX: 0
+  transformY: 0
+  transformZ: 0
 --- !u!114 &1526844821977472027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +319,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 5947211440871136476}
   - {fileID: 1962492878718161807}
   - {fileID: 3613125390286914905}
   - {fileID: 6879164155826805511}
@@ -312,3 +382,8 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!4 &5726162848475331963 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4f27da6dc529244581ea233ffd8bbf1, type: 3}
+  m_PrefabInstance: {fileID: 5259592730619959952}
+  m_PrefabAsset: {fileID: 0}

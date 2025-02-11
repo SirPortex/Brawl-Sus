@@ -7,7 +7,9 @@ using UnityEngine;
 public class ShotBullet : MonoBehaviourPun
 {
     GameObjectPool bulletPool;
-    float counter = 0.8f;
+    public float counter;
+    public float maxCounter;
+    public float transformX, transformY, transformZ;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class ShotBullet : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && counter >= 0.8f)
+        if (Input.GetMouseButtonDown(0) && counter >= maxCounter)
         {
             GameObject obj = bulletPool.GimmeInactiveGameObject();
 
@@ -36,7 +38,7 @@ public class ShotBullet : MonoBehaviourPun
 
                 obj.GetComponent<PoolObject>().readyToUse = false;
 
-                obj.transform.position = new Vector3(transform.position.x , transform.position.y + 1f, transform.position.z);
+                obj.transform.position = new Vector3(transform.position.x + transformX, transform.position.y + transformY, transform.position.z + transformZ);
                 obj.transform.rotation = transform.rotation;
                 obj.GetComponent<Bullet>().SetDirection(transform.forward);
 
