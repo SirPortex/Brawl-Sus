@@ -11,6 +11,8 @@ public class ShotBullet : MonoBehaviourPun
     public float maxCounter;
     public float transformX, transformY, transformZ;
 
+    public float cooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,24 +32,33 @@ public class ShotBullet : MonoBehaviourPun
 
         if (Input.GetMouseButtonDown(0) && counter >= maxCounter)
         {
-            GameObject obj = bulletPool.GimmeInactiveGameObject();
-
-            if (obj)
-            {
-                Debug.Log("PIUM !");
-
-                obj.GetComponent<PoolObject>().readyToUse = false;
-
-                obj.transform.position = new Vector3(transform.position.x + transformX, transform.position.y + transformY, transform.position.z + transformZ);
-                obj.transform.rotation = transform.rotation;
-                obj.GetComponent<Bullet>().SetDirection(transform.forward);
-
-                obj.GetComponent<Bullet>().owner = gameObject;
-
-                obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
-            }
+            StartCoroutine(AttackDelay());
+            
 
             counter = 0;
+        }
+
+    }
+
+    public IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(cooldown);
+
+        GameObject obj = bulletPool.GimmeInactiveGameObject();
+
+        if (obj)
+        {
+            Debug.Log("PIUM !");
+
+            obj.GetComponent<PoolObject>().readyToUse = false;
+
+            obj.transform.position = new Vector3(transform.position.x + transformX, transform.position.y + transformY, transform.position.z + transformZ);
+            obj.transform.rotation = transform.rotation;
+            obj.GetComponent<Bullet>().SetDirection(transform.forward);
+
+            obj.GetComponent<Bullet>().owner = gameObject;
+
+            obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
         }
 
     }

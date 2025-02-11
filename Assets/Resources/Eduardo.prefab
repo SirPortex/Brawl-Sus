@@ -412,8 +412,8 @@ MonoBehaviour:
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 4c351a09e8df2734a9d9ce8952224c94, type: 3}
   counter: 0
   maxCounter: 0.8
-  damage: 0.1
   cooldown: 0.8
+  damage: 0.1
   groundName: Ground
   animator: {fileID: 0}
 --- !u!114 &5679391771814617641
@@ -462,6 +462,7 @@ MonoBehaviour:
   transformX: 0
   transformY: 1
   transformZ: 0
+  cooldown: 0.1
 --- !u!114 &4532366102723943396
 MonoBehaviour:
   m_ObjectHideFlags: 0

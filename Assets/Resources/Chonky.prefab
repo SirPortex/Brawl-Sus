@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1692181490545552511}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.18981516, y: 0.7321758, z: -0.023291707}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -252,8 +252,8 @@ MonoBehaviour:
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 83d41c51f49b5654dbe25b21fc25c63b, type: 3}
   counter: 0
   maxCounter: 1.5
+  cooldown: 0.8
   damage: 0.1
-  cooldown: 1.5
   groundName: Ground
   animator: {fileID: 0}
 --- !u!114 &8290535892083548802
@@ -297,11 +297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430300d209d912842a1637cb4aeb49ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: 0
+  counter: 1.5
   maxCounter: 1.5
   transformX: 0
   transformY: 0
   transformZ: 0
+  cooldown: 0.8
 --- !u!114 &1526844821977472027
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -719,10 +719,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1693168075431792075, guid: fb5831ab86a1305409be662f4012fe0c, type: 3}
-      propertyPath: sceneViewId
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 396455656806538470, guid: fb5831ab86a1305409be662f4012fe0c, type: 3}
       propertyPath: m_Name
       value: VFX_GroundSlash
@@ -737,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4577072524519495006, guid: fb5831ab86a1305409be662f4012fe0c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4577072524519495006, guid: fb5831ab86a1305409be662f4012fe0c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -833,6 +829,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1041087098}
   - {fileID: 1327075979}
   - {fileID: 964654545}
   - {fileID: 1953982727067072154}
@@ -841,4 +838,3 @@ SceneRoots:
   - {fileID: 2541511102189083788}
   - {fileID: 428999681}
   - {fileID: 8408587647970418468}
-  - {fileID: 1041087098}

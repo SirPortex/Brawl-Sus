@@ -24,9 +24,10 @@ namespace Com.MyCompany.MyGame
         public float counter;
         public float maxCounter;
 
+        public float cooldown;
+
         public float damage;
 
-        public float cooldown;
 
 
         public string groundName;
