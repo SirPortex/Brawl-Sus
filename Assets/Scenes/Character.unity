@@ -719,6 +719,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1693168075431792075, guid: fb5831ab86a1305409be662f4012fe0c, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 396455656806538470, guid: fb5831ab86a1305409be662f4012fe0c, type: 3}
       propertyPath: m_Name
       value: VFX_GroundSlash

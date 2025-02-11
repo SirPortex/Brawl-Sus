@@ -28,6 +28,8 @@ namespace Com.MyCompany.MyGame
 
         public float damage;
 
+        public float deadTime;
+
 
 
         public string groundName;
@@ -150,9 +152,16 @@ namespace Com.MyCompany.MyGame
             {
                 if(health <= 0)
                 {
-                    GameManager.instance.LeaveRoom();
+                    StartCoroutine(Dead());
                 }
             }
+        }
+
+        IEnumerator Dead()
+        {
+            animator.SetBool("IsDead", true);
+            yield return new WaitForSeconds(deadTime);
+            GameManager.instance.LeaveRoom();
         }
 
         public void Attack()
