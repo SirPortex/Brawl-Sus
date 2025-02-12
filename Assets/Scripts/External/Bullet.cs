@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviourPun
         currentTime += Time.deltaTime;
         if (currentTime >= maxTime)
         {
+            //_rb.useGravity = false;
             currentTime = 0;
             gameObject.SetActive(false); //Se "devuelve" a la pool
             GetComponent<PoolObject>().readyToUse = true;
@@ -43,8 +44,18 @@ public class Bullet : MonoBehaviourPun
 
     public void FixedUpdate()
     {
+        if(normalAttack == true)
+        {
+            
+            AttackBullet();
+        }
+
+        else
+        {
+            
+            AttackParabolic();
+        }
         
-        AttackBullet();
 
     }
 
@@ -57,8 +68,10 @@ public class Bullet : MonoBehaviourPun
     public void AttackParabolic()
     {
         _rb.useGravity = true;
-        _rb.velocity = Vector3.zero;
-        _rb.AddForce(((_rb.transform.forward) + Vector3.up) * parabolicSpeed);
+        //_rb.velocity = Vector3.zero;
+        //_rb.AddForce(((_rb.transform.forward) + Vector3.up) * parabolicSpeed);
+
+        //_rb.AddRelativeForce(new Vector3(2, parabolicSpeed, 0));
     }
 
     public void SetDirection(Vector3 value)

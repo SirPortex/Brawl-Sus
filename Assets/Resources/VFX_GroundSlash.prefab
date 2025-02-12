@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663f04adefb9bab4d9b1cf39e8e97f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalAttack: 1
+  parabolicSpeed: 0
   speed: 5
   maxTime: 2
   bulletDamage: 0.5
