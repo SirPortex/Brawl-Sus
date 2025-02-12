@@ -253,7 +253,6 @@ MonoBehaviour:
   counter: 0
   maxCounter: 1.5
   cooldown: 0.8
-  damage: 0.1
   deadTime: 2
   groundName: Ground
   animator: {fileID: 0}

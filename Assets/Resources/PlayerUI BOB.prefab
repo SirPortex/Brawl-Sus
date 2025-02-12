@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2262989302739245354}
   - component: {fileID: -5907321122517483448}
   m_Layer: 5
-  m_Name: PlayerUI CHONKY
+  m_Name: PlayerUI BOB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 2
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1.5
+  m_MaxValue: 0.8
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

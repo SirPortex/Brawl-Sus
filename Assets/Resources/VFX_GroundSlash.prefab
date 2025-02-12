@@ -103,7 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   maxTime: 2
-  owner: {fileID: 0}
+  bulletDamage: 0.5
+  owner: {fileID: 4917009854253066177, guid: bfde92943a6eb9048b8594f0740feea3, type: 3}
 --- !u!114 &-1693168075431792075
 MonoBehaviour:
   m_ObjectHideFlags: 0

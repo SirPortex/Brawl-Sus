@@ -26,7 +26,7 @@ namespace Com.MyCompany.MyGame
 
         public float cooldown;
 
-        public float damage;
+        //public float damage;
 
         public float deadTime;
 
@@ -42,6 +42,8 @@ namespace Com.MyCompany.MyGame
         private float x, z, mouseX; //input
 
         private float currentSpeed;
+
+        private Bullet bulletComp;
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
         public static GameObject LocalPlayerInstance;
@@ -75,7 +77,8 @@ namespace Com.MyCompany.MyGame
 
             if (bullet && bullet.owner != gameObject)
             {
-                health -= damage;
+                health -= bullet.bulletDamage;
+
             }
         }
 
@@ -113,6 +116,7 @@ namespace Com.MyCompany.MyGame
 
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody>();
+            bulletComp = GetComponent<Bullet>();
 
             //gravityScale = -Mathf.Abs(gravityScale); //Valor Absoluto
 
@@ -251,10 +255,12 @@ namespace Com.MyCompany.MyGame
             if (stream.IsWriting)
             {
                 stream.SendNext(health);
+                stream.SendNext(counter);
             }
             else
             {
                 health = (float)stream.ReceiveNext();
+                counter = (float)stream.ReceiveNext();
             }
         }
 #if !UNITY_5_4_OR_NEWER

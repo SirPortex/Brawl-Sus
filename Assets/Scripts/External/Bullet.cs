@@ -6,8 +6,14 @@ using UnityEngine.Rendering;
 
 public class Bullet : MonoBehaviourPun
 {
+
+    public bool normalAttack;
+    public float parabolicSpeed;
+
     public float speed;
     public float maxTime;
+
+    public float bulletDamage;
 
     public GameObject owner;
     
@@ -31,11 +37,28 @@ public class Bullet : MonoBehaviourPun
             gameObject.SetActive(false); //Se "devuelve" a la pool
             GetComponent<PoolObject>().readyToUse = true;
         }
+
+
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
+    {
+        
+        AttackBullet();
+
+    }
+
+    public void AttackBullet()
     {
         _rb.velocity = speed * _dir;
+    }
+
+
+    public void AttackParabolic()
+    {
+        _rb.useGravity = true;
+        _rb.velocity = Vector3.zero;
+        _rb.AddForce(((_rb.transform.forward) + Vector3.up) * parabolicSpeed);
     }
 
     public void SetDirection(Vector3 value)

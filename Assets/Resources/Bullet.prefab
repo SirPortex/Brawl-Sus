@@ -181,9 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663f04adefb9bab4d9b1cf39e8e97f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parabolicSpeed: 10
   speed: 10
-  maxTime: 2
-  owner: {fileID: 0}
+  maxTime: 1000
+  bulletDamage: 0.1
+  owner: {fileID: 2688503741773351713, guid: 28902baf4f64f5f4f9a4405cc0cec856, type: 3}
 --- !u!114 &-1498940798459643343
 MonoBehaviour:
   m_ObjectHideFlags: 0
