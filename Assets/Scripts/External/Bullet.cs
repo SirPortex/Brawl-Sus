@@ -6,8 +6,6 @@ using UnityEngine.Rendering;
 
 public class Bullet : MonoBehaviourPun
 {
-
-    public bool normalAttack;
     public float parabolicSpeed;
 
     public float speed;
@@ -17,14 +15,16 @@ public class Bullet : MonoBehaviourPun
 
     public GameObject owner;
     
+
     private float currentTime;
     private Vector3 _dir;
-    private Rigidbody _rb;
+    protected Rigidbody _rb;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        
 
     }
 
@@ -39,39 +39,16 @@ public class Bullet : MonoBehaviourPun
             GetComponent<PoolObject>().readyToUse = true;
         }
 
-
     }
 
-    public void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
-        if(normalAttack == true)
-        {
-            
-            AttackBullet();
-        }
-
-        else
-        {
-            
-            AttackParabolic();
-        }
-        
-
+        AttackBullet();
     }
 
     public void AttackBullet()
     {
         _rb.velocity = speed * _dir;
-    }
-
-
-    public void AttackParabolic()
-    {
-        _rb.useGravity = true;
-        //_rb.velocity = Vector3.zero;
-        //_rb.AddForce(((_rb.transform.forward) + Vector3.up) * parabolicSpeed);
-
-        //_rb.AddRelativeForce(new Vector3(2, parabolicSpeed, 0));
     }
 
     public void SetDirection(Vector3 value)
