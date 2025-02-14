@@ -9,6 +9,20 @@ public class BOOM : MonoBehaviourPun
 {
     public float currentTime;
     public float maxTime;
+    public float explosionDamage;
+
+    public GameObject explosionOwner;
+
+    Bullet bulletFather;
+
+    public void Start()
+    {
+        //bulletFather = GetComponent<Bullet>();
+
+        //bulletFather.GetComponent<Bullet>().owner = explosionOwner;
+
+    
+    }
 
     private void Update()
     {

@@ -105,7 +105,7 @@ MonoBehaviour:
   parabolicSpeed: 250
   speed: 0
   maxTime: 1
-  bulletDamage: 0.25
+  bulletDamage: 0.4
   owner: {fileID: 0}
 --- !u!114 &1000376583714984245
 MonoBehaviour:

@@ -36,7 +36,7 @@ public class Bomb : Bullet
 
     private void Update()
     {
-        
+
     }
 
     public void AttackParabolic()

@@ -80,6 +80,13 @@ namespace Com.MyCompany.MyGame
                 health -= bullet.bulletDamage;
 
             }
+
+            BOOM boom = other.GetComponent<BOOM>();
+
+            if (boom && boom.explosionOwner != gameObject)
+            {
+                health -= boom.explosionDamage;
+            }
         }
 
         // Start is called before the first frame update

@@ -185,7 +185,7 @@ MonoBehaviour:
   speed: 10
   maxTime: 2
   bulletDamage: 0.1
-  owner: {fileID: 2688503741773351713, guid: 28902baf4f64f5f4f9a4405cc0cec856, type: 3}
+  owner: {fileID: 0}
 --- !u!114 &-1498940798459643343
 MonoBehaviour:
   m_ObjectHideFlags: 0
