@@ -190,10 +190,12 @@ namespace Com.MyCompany.MyGame
 
         IEnumerator Healing()
         {
-            yield return new WaitForSeconds(0.5f);
-            health += 0.1f;
+            for (float i = health; i <= 1; i += 0.1f)
+            {
+                health += 0.1f;
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
         }
-
         IEnumerator Dead()
         {
             walkingSpeed = 0;
