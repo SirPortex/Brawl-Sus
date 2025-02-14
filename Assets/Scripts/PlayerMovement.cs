@@ -183,19 +183,12 @@ namespace Com.MyCompany.MyGame
                 healthCounter = 0;
                 while (health < maxHealth)
                 {
-                    StartCoroutine(Healing());
+                    health += 0.1f * Time.deltaTime;
                 }
             }
         }
 
-        IEnumerator Healing()
-        {
-            for (float i = health; i <= 1; i += 0.1f)
-            {
-                health += 0.1f;
-                yield return new WaitForSeconds(Time.deltaTime);
-            }
-        }
+   
         IEnumerator Dead()
         {
             walkingSpeed = 0;
