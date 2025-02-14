@@ -21,8 +21,12 @@ namespace Com.MyCompany.MyGame
 
         public GameObject PlayerUiPrefab;
 
+        public float maxHealth;
+
         public float counter;
         public float maxCounter;
+        public float healthCounter;
+        public float healthRegenTime;
 
         public float cooldown;
 
@@ -78,6 +82,7 @@ namespace Com.MyCompany.MyGame
             if (bullet && bullet.owner != gameObject)
             {
                 health -= bullet.bulletDamage;
+                healthCounter = 0;
 
             }
 
@@ -86,13 +91,14 @@ namespace Com.MyCompany.MyGame
             if (boom && boom.explosionOwner != gameObject)
             {
                 health -= boom.explosionDamage;
+                healthCounter = 0;
             }
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            
+            healthCounter = 0;
 
             if (PlayerUiPrefab != null)
             {
@@ -166,6 +172,26 @@ namespace Com.MyCompany.MyGame
                     StartCoroutine(Dead());
                 }
             }
+
+            if(health < maxHealth)
+            {
+                healthCounter += Time.deltaTime;
+            }
+
+            if(healthCounter >= healthRegenTime)
+            {
+                healthCounter = 0;
+                while (health < maxHealth)
+                {
+                    StartCoroutine(Healing());
+                }
+            }
+        }
+
+        IEnumerator Healing()
+        {
+            yield return new WaitForSeconds(0.5f);
+            health += 0.1f;
         }
 
         IEnumerator Dead()
