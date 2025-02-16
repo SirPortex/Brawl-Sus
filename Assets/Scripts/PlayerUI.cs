@@ -44,6 +44,7 @@ namespace Com.MyCompany.MyGame
 
         void Awake()
         {
+
             this.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
 
             _canvasGroup = this.GetComponent<CanvasGroup>();

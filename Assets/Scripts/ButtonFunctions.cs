@@ -11,4 +11,9 @@ public class ButtonFunctions : MonoBehaviour
         Debug.Log("App closed");
         Application.Quit();
     }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 }

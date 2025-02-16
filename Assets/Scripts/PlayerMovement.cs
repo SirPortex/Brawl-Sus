@@ -11,6 +11,10 @@ namespace Com.MyCompany.MyGame
 {
     public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
+        
+
+        public bool potentialWinner = false;
+
         public float walkingSpeed, rotationSpeed, aceleration, sphereRadius;//,gravityScale;
 
 
@@ -93,11 +97,26 @@ namespace Com.MyCompany.MyGame
                 health -= boom.explosionDamage;
                 healthCounter = 0;
             }
+
+            if (other.CompareTag("Detector"))
+            {
+                potentialWinner = true;
+            }
+
+            if(other.CompareTag("Win") && potentialWinner)
+            {
+                GameManager.instance.LeaveRoom();
+                Destroy(this.gameObject);
+                PhotonNetwork.LoadLevel("Victory");
+
+            }
         }
 
         // Start is called before the first frame update
         void Start()
         {
+            
+
             healthCounter = 0;
 
             if (PlayerUiPrefab != null)
@@ -143,6 +162,8 @@ namespace Com.MyCompany.MyGame
         // Update is called once per frame
         void Update()
         {
+            
+
             counter += Time.deltaTime;
 
             if (!photonView.IsMine && PhotonNetwork.IsConnected)
@@ -198,6 +219,12 @@ namespace Com.MyCompany.MyGame
             animator.SetBool("IsDead", true);
             yield return new WaitForSeconds(deadTime);
             GameManager.instance.LeaveRoom();
+            //SceneManager.LoadScene(5);
+            Destroy(this.gameObject);
+            PhotonNetwork.LoadLevel("Defeat");
+            
+
+
         }
 
         public void Attack()
