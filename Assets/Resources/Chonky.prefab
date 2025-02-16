@@ -252,11 +252,11 @@ MonoBehaviour:
   sphereRadius: 0.37
   health: 2
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 450c7b7567c3c5c45aaeacf3ae250f63, type: 3}
-  maxHealth: 0
+  maxHealth: 2
   counter: 0
   maxCounter: 1.5
   healthCounter: 0
-  healthRegenTime: 0
+  healthRegenTime: 10
   cooldown: 0.8
   deadTime: 2
   groundName: Ground

@@ -415,8 +415,6 @@ MonoBehaviour:
   maxHealth: 1
   counter: 0
   maxCounter: 0.8
-  healthCounter: 0
-  healthRegenTime: 5
   cooldown: 0.8
   deadTime: 2
   groundName: Ground

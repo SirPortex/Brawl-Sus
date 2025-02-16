@@ -30,8 +30,6 @@ namespace Com.MyCompany.MyGame
 
         public float counter;
         public float maxCounter;
-        public float healthCounter;
-        public float healthRegenTime;
 
         public float cooldown;
 
@@ -91,7 +89,7 @@ namespace Com.MyCompany.MyGame
             if (bullet && bullet.owner != gameObject)
             {
                 health -= bullet.bulletDamage;
-                healthCounter = 0;
+     
 
             }
 
@@ -100,7 +98,7 @@ namespace Com.MyCompany.MyGame
             if (boom && boom.explosionOwner != gameObject)
             {
                 health -= boom.explosionDamage;
-                healthCounter = 0;
+
             }
 
             if (other.CompareTag("Detector"))
@@ -120,7 +118,7 @@ namespace Com.MyCompany.MyGame
         void Start()
         {
             
-            healthCounter = 0;
+
 
             if (PlayerUiPrefab != null)
             {
@@ -196,20 +194,6 @@ namespace Com.MyCompany.MyGame
                     StartCoroutine(Dead());
                 }
             }
-
-            if(health < maxHealth)
-            {
-                healthCounter += Time.deltaTime;
-            }
-
-            if(healthCounter >= healthRegenTime)
-            {
-                healthCounter = 0;
-                while (health < maxHealth)
-                {
-                    health += 0.1f * Time.deltaTime;
-                }
-            }
         }
 
    
@@ -221,8 +205,9 @@ namespace Com.MyCompany.MyGame
 
             animator.SetBool("IsDead", true);
             yield return new WaitForSeconds(deadTime);
+
+
             GameManager.instance.LeaveRoom();
-            //SceneManager.LoadScene(5);
             Destroy(this.gameObject);
             PhotonNetwork.LoadLevel("Defeat");
             
@@ -270,24 +255,19 @@ namespace Com.MyCompany.MyGame
 
             ApplySpeed();
 
-            //joystick.gameObject.SetActive(true);
-            //rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
-            //if (joystick.Horizontal != 0 || joystick.Vertical != 0)
-            //{
-            //    //Debug.Log("Estoy moviendome");
-            //    transform.rotation = Quaternion.LookRotation(rb.velocity);
-            //}
-
-
 #endif
 
 #if UNITY_ANDROID //PARA QUE FUNCIONE EN ANDROID
             joystick.gameObject.SetActive(true);
-            rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
-            if(joystick.Horizontal != 0 || joystick.Vertical != 0)
+
+            if (photonView.IsMine)
             {
-                //Debug.Log("Estoy moviendome");
-                transform.rotation = Quaternion.LookRotation(rb.velocity);
+                rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
+                if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+                {
+                    //Debug.Log("Estoy moviendome");
+                    transform.rotation = Quaternion.LookRotation(rb.velocity);
+                }
             }
 #endif
 

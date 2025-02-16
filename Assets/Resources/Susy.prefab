@@ -255,13 +255,11 @@ MonoBehaviour:
   rotationSpeed: 200
   aceleration: 7
   sphereRadius: 0.37
-  health: 0.8
+  health: 0.75
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 60ad5eab8a050e241a273b694e68e2ce, type: 3}
-  maxHealth: 0
+  maxHealth: 0.75
   counter: 0
   maxCounter: 0.6
-  healthCounter: 0
-  healthRegenTime: 0
   cooldown: 0.6
   deadTime: 2
   groundName: Ground
