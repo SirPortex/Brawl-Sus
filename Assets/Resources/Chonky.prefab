@@ -244,6 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6dd06d107cbad943bd5c2dc5a931bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  potentialWinner: 0
   walkingSpeed: 3
   rotationSpeed: 200
   aceleration: 3

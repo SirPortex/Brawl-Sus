@@ -2,20 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSelection : MonoBehaviour
+public class CharacterSel02 : MonoBehaviour
 {
 
     public GameObject[] characters;
 
     public int selectedCharacter = 0;
-    public void Start()
-    {
-        selectedCharacter = PlayerPrefs.GetInt("selectedCharacter", selectedCharacter);
-        for (int i = 0; i < characters.Length; i++)
-        {
-            characters[i].SetActive(i == selectedCharacter);
-        }
-    }
+
 
 
     public void NextCharacter()
