@@ -12,6 +12,7 @@ namespace Com.MyCompany.MyGame
     public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         
+        public FixedJoystick joystick;
 
         public bool potentialWinner = false;
 
@@ -58,6 +59,10 @@ namespace Com.MyCompany.MyGame
 
         private void Awake()
         {
+            joystick = FindObjectOfType<FixedJoystick>();
+
+            joystick.gameObject.SetActive(false);
+
             if (photonView.IsMine)
             {
                 PlayerMovement.LocalPlayerInstance = this.gameObject;
@@ -263,7 +268,31 @@ namespace Com.MyCompany.MyGame
         }
         private void FixedUpdate()
         {
-            ApplySpeed();
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE //PARA QUE FUNCIONE EN PC
+
+            //ApplySpeed();
+
+            joystick.gameObject.SetActive(true);
+            rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
+            if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+            {
+                //Debug.Log("Estoy moviendome");
+                transform.rotation = Quaternion.LookRotation(rb.velocity);
+            }
+
+
+#endif
+
+#if UNITY_ANDROID //PARA QUE FUNCIONE EN ANDROID
+            joystick.gameObject.SetActive(true);
+            rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
+            if(joystick.Horizontal != 0 || joystick.Vertical != 0)
+            {
+                //Debug.Log("Estoy moviendome");
+                transform.rotation = Quaternion.LookRotation(rb.velocity);
+            }
+#endif
+
 
 
         }
