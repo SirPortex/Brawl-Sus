@@ -253,7 +253,22 @@ namespace Com.MyCompany.MyGame
         {
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE //PARA QUE FUNCIONE EN PC
 
-            ApplySpeed();
+            //ApplySpeed();
+
+            joystick.gameObject.SetActive(true);
+
+            if (photonView.IsMine)
+            {
+
+                rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
+
+                if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+                {
+                    //Debug.Log("Estoy moviendome");
+                    transform.rotation = Quaternion.LookRotation(rb.velocity);
+                }
+            }
+
 
 #endif
 
@@ -262,7 +277,9 @@ namespace Com.MyCompany.MyGame
 
             if (photonView.IsMine)
             {
+
                 rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
+
                 if (joystick.Horizontal != 0 || joystick.Vertical != 0)
                 {
                     //Debug.Log("Estoy moviendome");
