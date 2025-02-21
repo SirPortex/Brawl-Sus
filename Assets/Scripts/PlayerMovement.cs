@@ -26,7 +26,7 @@ namespace Com.MyCompany.MyGame
 
         public GameObject PlayerUiPrefab;
 
-        public float maxHealth;
+        public float maxHealth, regenTime, regenMaxTime;
 
         public float counter;
         public float maxCounter;
@@ -89,8 +89,9 @@ namespace Com.MyCompany.MyGame
             if (bullet && bullet.owner != gameObject)
             {
                 health -= bullet.bulletDamage;
-     
 
+                regenTime = 0;
+     
             }
 
             BOOM boom = other.GetComponent<BOOM>();
@@ -194,6 +195,33 @@ namespace Com.MyCompany.MyGame
                     StartCoroutine(Dead());
                 }
             }
+
+            if(health < maxHealth)
+            {
+                regenTime += Time.deltaTime;
+
+                if(regenTime >= regenMaxTime)
+                {
+                    
+                    regenTime = 0;
+                    //health += 0.1f;
+                    StartCoroutine(Healing());
+                }
+            }
+            else
+            {
+                StopCoroutine(Healing());
+            }
+        }
+
+        [PunRPC]
+        IEnumerator Healing()
+        {
+            for(float i = 0; i < 1; i += 0.1f)
+            {
+                health += 0.1f;
+                yield return new WaitForSeconds(0.5f);
+            }
         }
 
    
@@ -253,21 +281,7 @@ namespace Com.MyCompany.MyGame
         {
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE //PARA QUE FUNCIONE EN PC
 
-            //ApplySpeed();
-
-            joystick.gameObject.SetActive(true);
-
-            if (photonView.IsMine)
-            {
-
-                rb.velocity = new Vector3(joystick.Horizontal * walkingSpeed, rb.velocity.y, joystick.Vertical * walkingSpeed);
-
-                if (joystick.Horizontal != 0 || joystick.Vertical != 0)
-                {
-                    //Debug.Log("Estoy moviendome");
-                    transform.rotation = Quaternion.LookRotation(rb.velocity);
-                }
-            }
+            ApplySpeed();
 
 
 #endif
