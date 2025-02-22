@@ -6,6 +6,7 @@ using UnityEngine;
 using System;
 using Pavel;
 using UnityEngine.SceneManagement;
+using Photon.Pun.Demo.Asteroids;
 
 namespace Com.MyCompany.MyGame
 {
@@ -26,8 +27,10 @@ namespace Com.MyCompany.MyGame
         [Tooltip("The Player's UI GameObject Prefab")]
 
         public GameObject PlayerUiPrefab;
+        public GameObject HealingEffect;
+        public GameObject UltiUiPrefab;
 
-        public float maxHealth, regenTime, regenMaxTime, healingValue;
+        public float maxHealth, regenTime, regenMaxTime, healingValue, ulti, maxUlti;
 
         public float counter;
         public float maxCounter;
@@ -58,6 +61,7 @@ namespace Com.MyCompany.MyGame
 
         private void Awake()
         {
+            ulti = 0;
             //joystick.gameObject.SetActive(false);
 
 #if UNITY_ANDROID //PARA QUE FUNCIONE EN ANDROID
@@ -68,6 +72,12 @@ namespace Com.MyCompany.MyGame
             if (photonView.IsMine)
             {
                 PlayerMovement.LocalPlayerInstance = this.gameObject;
+                UltiUiPrefab.SetActive(true);
+            }
+
+            else
+            {
+                UltiUiPrefab.SetActive(false);
             }
 
             DontDestroyOnLoad(this.gameObject);
@@ -78,8 +88,7 @@ namespace Com.MyCompany.MyGame
         {
             if(this != null)
             {
-
-            GetComponentInChildren<GameObjectPool>().DelayInstanitateObjects();
+                GetComponentInChildren<GameObjectPool>().DelayInstanitateObjects();
             }
         }
         [PunRPC]
@@ -92,6 +101,14 @@ namespace Com.MyCompany.MyGame
 
             if (bullet && bullet.owner != gameObject)
             {
+                //ulti += 0.1f;
+
+                //bullet.owner.GetComponent<PlayerMovement>().ulti += 0.1f;
+
+                //ulti = bullet.owner.GetComponent<PlayerMovement>().ulti += 0.1f;
+              
+                
+
                 health = Mathf.Clamp(health, 0, maxHealth);
 
                 health -= bullet.bulletDamage;
@@ -100,6 +117,7 @@ namespace Com.MyCompany.MyGame
 
                 if(coroutine != null)
                 {
+                    HealingEffect.SetActive(false);
                     StopCoroutine(coroutine);
                     coroutine = null;
                 }
@@ -118,6 +136,7 @@ namespace Com.MyCompany.MyGame
                 
                 if(coroutine != null)
                 {
+                    HealingEffect.SetActive(false);
                     StopCoroutine(coroutine);
                     coroutine = null;
                 }
@@ -137,7 +156,6 @@ namespace Com.MyCompany.MyGame
                 PhotonNetwork.LoadLevel("Victory");
             }
         }
-
         // Start is called before the first frame update
         void Start()
         {
@@ -153,6 +171,16 @@ namespace Com.MyCompany.MyGame
             else
             {
                 Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+            }
+
+            if(UltiUiPrefab != null)
+            {
+                GameObject _ultiGo = Instantiate(UltiUiPrefab);
+                _ultiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+            }
+            else
+            {
+                Debug.LogWarning("<Color=Red><a>Missing</a></Color> UltiUiPrefab reference on player Prefab.", this);
             }
 
 
@@ -203,7 +231,7 @@ namespace Com.MyCompany.MyGame
 
             if (Input.GetMouseButtonDown(0) && counter >= maxCounter)
             {
-
+                //ulti += 0.1f;
                 Attack();
                 counter = 0;
             }
@@ -230,6 +258,9 @@ namespace Com.MyCompany.MyGame
                     regenTime = 0;
 
                     StartCoroutine(coroutine);
+
+                    HealingEffect.SetActive(true);
+
                     Debug.Log("Corrutina Empezada");
                 }
             }
@@ -239,9 +270,16 @@ namespace Com.MyCompany.MyGame
                 if(coroutine != null)
                 {
                     StopCoroutine(coroutine);
+
+                    HealingEffect.SetActive(false);
                     coroutine = null;
                     Debug.Log("Corrutina Parada");
                 }
+            }
+
+            if(ulti >= 1)
+            {
+                Debug.Log("Ulti Ready");
             }
         }
 
@@ -419,6 +457,9 @@ void OnLevelWasLoaded(int level)
         {
             GameObject _uiGo = Instantiate(this.PlayerUiPrefab);
             _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+
+            GameObject _ultiGo = Instantiate(this.UltiUiPrefab);
+            _ultiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
 
             // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
             if (!Physics.Raycast(transform.position, -Vector3.up, 5f))

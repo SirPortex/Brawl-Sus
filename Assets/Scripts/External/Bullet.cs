@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Com.MyCompany.MyGame;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -24,7 +25,8 @@ public class Bullet : MonoBehaviourPun
     protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        
+
+        owner.GetComponent<PlayerMovement>();
 
     }
 
@@ -39,6 +41,17 @@ public class Bullet : MonoBehaviourPun
             GetComponent<PoolObject>().readyToUse = true;
         }
 
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject != owner)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                owner.GetComponent<PlayerMovement>().ulti += 0.1f;
+            }
+        }
     }
 
     protected virtual void FixedUpdate()

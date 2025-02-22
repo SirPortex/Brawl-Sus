@@ -257,6 +257,7 @@ MonoBehaviour:
   sphereRadius: 0.37
   health: 0.75
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 60ad5eab8a050e241a273b694e68e2ce, type: 3}
+  HealingEffect: {fileID: 0}
   maxHealth: 0.75
   regenTime: 0
   regenMaxTime: 10
