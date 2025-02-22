@@ -415,6 +415,7 @@ MonoBehaviour:
   maxHealth: 1
   regenTime: 0
   regenMaxTime: 5
+  healingValue: 0.05
   counter: 0
   maxCounter: 0.8
   cooldown: 0.8

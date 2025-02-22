@@ -11,7 +11,8 @@ namespace Com.MyCompany.MyGame
 {
     public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
-        
+        private IEnumerator coroutine;
+
         public FixedJoystick joystick;
 
         public bool potentialWinner = false;
@@ -26,7 +27,7 @@ namespace Com.MyCompany.MyGame
 
         public GameObject PlayerUiPrefab;
 
-        public float maxHealth, regenTime, regenMaxTime;
+        public float maxHealth, regenTime, regenMaxTime, healingValue;
 
         public float counter;
         public float maxCounter;
@@ -57,9 +58,12 @@ namespace Com.MyCompany.MyGame
 
         private void Awake()
         {
-            joystick = FindObjectOfType<FixedJoystick>();
+            //joystick.gameObject.SetActive(false);
 
-            joystick.gameObject.SetActive(false);
+#if UNITY_ANDROID //PARA QUE FUNCIONE EN ANDROID
+            joystick = FindObjectOfType<FixedJoystick>();
+#endif
+
 
             if (photonView.IsMine)
             {
@@ -78,8 +82,8 @@ namespace Com.MyCompany.MyGame
             GetComponentInChildren<GameObjectPool>().DelayInstanitateObjects();
             }
         }
-
-        private void OnTriggerEnter(Collider other)
+        [PunRPC]
+        public void OnTriggerEnter(Collider other)
         {
             if (!photonView.IsMine)
                 return;
@@ -88,17 +92,36 @@ namespace Com.MyCompany.MyGame
 
             if (bullet && bullet.owner != gameObject)
             {
+                health = Mathf.Clamp(health, 0, maxHealth);
+
                 health -= bullet.bulletDamage;
 
                 regenTime = 0;
-     
+
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                    coroutine = null;
+                }
+                Debug.Log("Corrutina Parada");
             }
 
             BOOM boom = other.GetComponent<BOOM>();
 
             if (boom && boom.explosionOwner != gameObject)
             {
+                health = Mathf.Clamp(health, 0, maxHealth);
+
                 health -= boom.explosionDamage;
+
+                regenTime = 0;
+                
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                    coroutine = null;
+                }
+                Debug.Log("Corrutina Parada");
 
             }
 
@@ -118,8 +141,9 @@ namespace Com.MyCompany.MyGame
         // Start is called before the first frame update
         void Start()
         {
-            
+            //coroutine = Healing();
 
+            health = Mathf.Clamp(health, 0, maxHealth);
 
             if (PlayerUiPrefab != null)
             {
@@ -202,26 +226,39 @@ namespace Com.MyCompany.MyGame
 
                 if(regenTime >= regenMaxTime)
                 {
-                    
+                    coroutine = Healing();
                     regenTime = 0;
-                    //health += 0.1f;
-                    StartCoroutine(Healing());
+
+                    StartCoroutine(coroutine);
+                    Debug.Log("Corrutina Empezada");
                 }
             }
-            else
+            else if(health >= maxHealth)
             {
-                StopCoroutine(Healing());
+                regenTime = 0;
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                    coroutine = null;
+                    Debug.Log("Corrutina Parada");
+                }
             }
         }
 
         [PunRPC]
         IEnumerator Healing()
         {
-            for(float i = 0; i < 1; i += 0.1f)
+            regenTime = 0;
+
+            health = Mathf.Clamp(health, 0, maxHealth);
+
+            for(float i = 0; i < maxHealth; i += healingValue)
             {
-                health += 0.1f;
+                i = health;
+                health += healingValue;
                 yield return new WaitForSeconds(0.5f);
             }
+
         }
 
    

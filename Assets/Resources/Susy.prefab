@@ -259,7 +259,8 @@ MonoBehaviour:
   PlayerUiPrefab: {fileID: 181818039813526628, guid: 60ad5eab8a050e241a273b694e68e2ce, type: 3}
   maxHealth: 0.75
   regenTime: 0
-  regenMaxTime: 0
+  regenMaxTime: 10
+  healingValue: 0.05
   counter: 0
   maxCounter: 0.6
   cooldown: 0.6
