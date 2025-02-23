@@ -444,6 +444,9 @@ PrefabInstance:
       addedObject: {fileID: 2994279028072879161}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e928911b59a4ba4b88dc375383d8e0d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 4774341124566859297}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e928911b59a4ba4b88dc375383d8e0d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 4532366102723943396}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e928911b59a4ba4b88dc375383d8e0d, type: 3}
       insertIndex: -1
@@ -558,8 +561,9 @@ MonoBehaviour:
   regenTime: 0
   regenMaxTime: 5
   healingValue: 0.05
-  ulti: 20.700043
+  ulti: 34.10005
   maxUlti: 0
+  ultiDuration: 0
   counter: 0
   maxCounter: 0.8
   cooldown: 0.8
@@ -614,6 +618,19 @@ MonoBehaviour:
   transformZ: 0
   cooldown: 0.1
   deadTime: 2
+--- !u!114 &4774341124566859297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688503741773351713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805fee98d8990dd4484c74e4cd29689a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bob: {fileID: 0}
 --- !u!114 &4532366102723943396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +697,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: IsDead
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsUlting
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0

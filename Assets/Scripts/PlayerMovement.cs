@@ -32,7 +32,7 @@ namespace Com.MyCompany.MyGame
         public GameObject HealingEffect;
         public GameObject UltiUiPrefab;
 
-        public float maxHealth, regenTime, regenMaxTime, healingValue, ulti, maxUlti;
+        public float maxHealth, regenTime, regenMaxTime, healingValue, ulti, maxUlti, ultiDuration;
 
         private Image ultiImage;
 
@@ -288,14 +288,6 @@ namespace Com.MyCompany.MyGame
             if(ulti >= 1)
             {
                 Debug.Log("Ulti Ready");
-            }
-
-            if(ultimateReady && Input.GetKeyDown(KeyCode.Q))
-            {
-                animator.SetBool("IsUlting", true);
-                ulti = 0;
-                ultimateReady = false;
-
             }
         }
 
