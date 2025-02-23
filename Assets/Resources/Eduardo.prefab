@@ -545,6 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
   potentialWinner: 0
+  ultimateReady: 1
   walkingSpeed: 5
   rotationSpeed: 200
   aceleration: 5
@@ -557,7 +558,7 @@ MonoBehaviour:
   regenTime: 0
   regenMaxTime: 5
   healingValue: 0.05
-  ulti: 6.899996
+  ulti: 20.700043
   maxUlti: 0
   counter: 0
   maxCounter: 0.8

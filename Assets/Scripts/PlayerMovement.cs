@@ -7,6 +7,7 @@ using System;
 using Pavel;
 using UnityEngine.SceneManagement;
 using Photon.Pun.Demo.Asteroids;
+using UnityEngine.UI;
 
 namespace Com.MyCompany.MyGame
 {
@@ -17,6 +18,7 @@ namespace Com.MyCompany.MyGame
         public FixedJoystick joystick;
 
         public bool potentialWinner = false;
+        public bool ultimateReady = false;
 
         public float walkingSpeed, rotationSpeed, aceleration, sphereRadius;//,gravityScale;
 
@@ -31,6 +33,8 @@ namespace Com.MyCompany.MyGame
         public GameObject UltiUiPrefab;
 
         public float maxHealth, regenTime, regenMaxTime, healingValue, ulti, maxUlti;
+
+        private Image ultiImage;
 
         public float counter;
         public float maxCounter;
@@ -61,6 +65,7 @@ namespace Com.MyCompany.MyGame
 
         private void Awake()
         {
+            
             ulti = 0;
             //joystick.gameObject.SetActive(false);
 
@@ -82,6 +87,11 @@ namespace Com.MyCompany.MyGame
 
             DontDestroyOnLoad(this.gameObject);
             SceneManager.activeSceneChanged += OnSceneLoaded;
+        }
+
+        public void PlusUlti()
+        {
+            ulti += 0.1f;
         }
 
         void OnSceneLoaded(Scene scene, Scene mode)
@@ -107,8 +117,6 @@ namespace Com.MyCompany.MyGame
 
                 //ulti = bullet.owner.GetComponent<PlayerMovement>().ulti += 0.1f;
               
-                
-
                 health = Mathf.Clamp(health, 0, maxHealth);
 
                 health -= bullet.bulletDamage;
@@ -280,6 +288,14 @@ namespace Com.MyCompany.MyGame
             if(ulti >= 1)
             {
                 Debug.Log("Ulti Ready");
+            }
+
+            if(ultimateReady && Input.GetKeyDown(KeyCode.Q))
+            {
+                animator.SetBool("IsUlting", true);
+                ulti = 0;
+                ultimateReady = false;
+
             }
         }
 

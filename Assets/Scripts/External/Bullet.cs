@@ -41,6 +41,12 @@ public class Bullet : MonoBehaviourPun
             GetComponent<PoolObject>().readyToUse = true;
         }
 
+        if(owner.GetComponent<PlayerMovement>().ulti >= 1)
+        {
+            Debug.Log("ULTI_LISTA");
+            owner.GetComponent<PlayerMovement>().ultimateReady = true;
+        }
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -49,7 +55,7 @@ public class Bullet : MonoBehaviourPun
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                owner.GetComponent<PlayerMovement>().ulti += 0.1f;
+               owner.GetComponent<PlayerMovement>().PlusUlti();
             }
         }
     }
