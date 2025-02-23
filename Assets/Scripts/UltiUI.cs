@@ -14,8 +14,12 @@ public class UltiUI : MonoBehaviourPunCallbacks, IPunObservable
 
     private PlayerMovement target;
 
+    public Image ultiImage;
+
     void Awake()
     {
+        ultiImage.enabled = false;
+
         this.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
 
     }
@@ -32,6 +36,14 @@ public class UltiUI : MonoBehaviourPunCallbacks, IPunObservable
         {
             Destroy(this.gameObject);
             return;
+        }
+        if (target.ultimateReady)
+        {
+            ultiImage.enabled = true;
+        }
+        else
+        {
+            ultiImage.enabled = false;
         }
     }
     void LateUpdate()

@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUltiSlider: {fileID: 2915282194012443298}
+  ultiImage: {fileID: 1893585534310933910}
 --- !u!114 &8320776105160020412
 MonoBehaviour:
   m_ObjectHideFlags: 0

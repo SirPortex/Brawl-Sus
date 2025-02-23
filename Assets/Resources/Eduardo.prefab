@@ -47,6 +47,53 @@ MonoBehaviour:
   objectToPool: {fileID: 2216089166900781191, guid: 179f5958ac21fe348a174ae9be060437, type: 3}
   poolSize: 0
   shouldExpand: 1
+--- !u!1 &7864364655192028111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3599546311103471073}
+  - component: {fileID: 3494468616649116099}
+  m_Layer: 0
+  m_Name: UltiPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3599546311103471073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7864364655192028111}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.028084517, y: 0.8154993, z: -0.025374413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3315963535053672859}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3494468616649116099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7864364655192028111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e238f2513a54f429713960aa8ee959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPool: {fileID: 2216089166900781191, guid: c45ccde7bb15d7a459fde359f382c47e, type: 3}
+  poolSize: 0
+  shouldExpand: 1
 --- !u!1001 &1871734911613275788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -420,6 +467,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4e928911b59a4ba4b88dc375383d8e0d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2628969911081628735}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4e928911b59a4ba4b88dc375383d8e0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3599546311103471073}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e928911b59a4ba4b88dc375383d8e0d, type: 3}
       insertIndex: -1
@@ -561,7 +611,7 @@ MonoBehaviour:
   regenTime: 0
   regenMaxTime: 5
   healingValue: 0.05
-  ulti: 43.499992
+  ulti: 89.69968
   maxUlti: 0
   ultiDuration: 1
   ultiIncrement: 0.2
@@ -632,6 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bob: {fileID: 0}
+  ultiPool: {fileID: 3494468616649116099}
 --- !u!114 &4532366102723943396
 MonoBehaviour:
   m_ObjectHideFlags: 0
