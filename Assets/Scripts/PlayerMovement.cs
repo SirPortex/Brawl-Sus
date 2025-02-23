@@ -32,7 +32,7 @@ namespace Com.MyCompany.MyGame
         public GameObject HealingEffect;
         public GameObject UltiUiPrefab;
 
-        public float maxHealth, regenTime, regenMaxTime, healingValue, ulti, maxUlti, ultiDuration;
+        public float maxHealth, regenTime, regenMaxTime, healingValue, ulti, maxUlti, ultiDuration, ultiIncrement;
 
         private Image ultiImage;
 
@@ -65,7 +65,7 @@ namespace Com.MyCompany.MyGame
 
         private void Awake()
         {
-            
+            ultimateReady = false;
             ulti = 0;
             //joystick.gameObject.SetActive(false);
 
@@ -91,7 +91,7 @@ namespace Com.MyCompany.MyGame
 
         public void PlusUlti()
         {
-            ulti += 0.1f;
+            ulti += ultiIncrement;
         }
 
         void OnSceneLoaded(Scene scene, Scene mode)

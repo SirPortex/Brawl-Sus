@@ -561,9 +561,10 @@ MonoBehaviour:
   regenTime: 0
   regenMaxTime: 5
   healingValue: 0.05
-  ulti: 34.10005
+  ulti: 43.499992
   maxUlti: 0
-  ultiDuration: 0
+  ultiDuration: 1
+  ultiIncrement: 0.2
   counter: 0
   maxCounter: 0.8
   cooldown: 0.8
