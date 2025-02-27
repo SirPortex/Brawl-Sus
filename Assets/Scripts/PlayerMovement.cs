@@ -8,6 +8,9 @@ using Pavel;
 using UnityEngine.SceneManagement;
 using Photon.Pun.Demo.Asteroids;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEditor.Rendering;
 
 namespace Com.MyCompany.MyGame
 {
@@ -16,6 +19,8 @@ namespace Com.MyCompany.MyGame
         private IEnumerator coroutine;
 
         public FixedJoystick joystick;
+
+        [SerializeField] private Volume damageEffect;
 
         public bool potentialWinner = false;
         public bool ultimateReady = false;
@@ -65,6 +70,8 @@ namespace Com.MyCompany.MyGame
 
         private void Awake()
         {
+            damageEffect.weight = 0;
+            
             ultimateReady = false;
             ulti = 0;
             //joystick.gameObject.SetActive(false);
@@ -288,6 +295,20 @@ namespace Com.MyCompany.MyGame
             if(ulti >= 1)
             {
                 Debug.Log("Ulti Ready");
+            }
+
+            if(health <= maxHealth / 2)
+            {
+                //damageEffect.weight = 1;
+                for(int i = 0; i < 10; i++)
+                {
+                    damageEffect.weight++;
+                    
+                }
+            }
+            else
+            {
+                damageEffect.weight = 0;
             }
         }
 
